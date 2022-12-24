@@ -69,15 +69,15 @@ void DrawPixel(int x, int y, int color, u8 *screen) { //stolen from GodMode9 :))
 }
 
 void DrawCircle(int x, int y, int r, int color, u8 *screen) {
-	int or[2] = {x+r, y+r};
-	int ul[2] = {x-r, y-r};
-	int dx;
-	int dy;
-	for (dx = ul[0]; dx < or[0]; dx++) {
-		for (dy = ul[1]; dy < or[0]; dy++) {
-			if ( ( ( ( (x-dx)^2) + ( (y-dy)^2) )^(1/2)) <= r) {
-				DrawPixel(x, y, color, screen); //so easy took me only ~45 minutes to find out
-			}
-		}
-	}
+  int or[2] = {x + r, y + r};
+  int ul[2] = {x - r, y - r};
+  int dx;
+  int dy;
+  for (dx = ul[0]; dx < or[0]; dx++) {
+    for (dy = ul[1]; dy < or[0]; dy++) {
+      if (sqrt((x - dx) * (x - dx) + (y - dy) * (y - dy)) <= r) {
+        DrawPixel(dx, dy, color, screen);
+      }
+    }
+  }
 }

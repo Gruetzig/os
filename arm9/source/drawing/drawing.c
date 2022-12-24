@@ -1,7 +1,5 @@
 #include "drawing.h"
 
-#define PIXEL_OFFSET(x, y)  (((x) * SCREEN_HEIGHT) + (SCREEN_HEIGHT - (y) - 1)) //stolen from godmode9 :))
-
 static u8 *top_screen0 = NULL;
 static u8 *top_screen1 = NULL;
 static u8 *bot_screen0 = NULL;
@@ -61,7 +59,13 @@ u8* GetScreen(int screen) {
 }
 
 void DrawPixel(int x, int y, int color, u8 *screen) { //stolen from GodMode9 :))
-	screen[PIXEL_OFFSET(x, y)] = color;
+	int xDisplacement = (x * BYTES_PER_PIXEL * SCREEN_HEIGHT);
+	int yDisplacement = ((SCREEN_HEIGHT - y - 1) * BYTES_PER_PIXEL);
+	u8 *screenPos = screen + xDisplacement + yDisplacement;
+	*(screenPos + 0) = color >> 16;         // B
+	*(screenPos + 1) = color >> 8;          // G
+	*(screenPos + 2) = color & 0xFF;        // R
+
 }
 
 void DrawCircle(int x, int y, int r, int color, u8 *screen) {

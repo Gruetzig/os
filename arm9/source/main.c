@@ -1,5 +1,7 @@
 #include "types.h"
 #include "drawing/drawing.h"
+#include "utils/utils.h"
+#include "buttons.h"
 
 u8* screen;
 
@@ -9,9 +11,12 @@ void main(int argc, char *argv[])
 	ClearScreenFull(true, true);
 	int color = COLOR_WHITE;
 	screen = GetScreen(1);
-	int i;
-	for (i=0;i<10;i++) {
-		DrawCircle(50, 50, i, color, screen);
+	DrawCircle(50, 50, 20, color, screen);
+  	while (true) {//Main Loop 
+	
+		if (HID_PAD & BUTTON_START) {
+			poweroff();
+		}
 	}
-  	
+	
 }

@@ -4,7 +4,7 @@ CC = arm-none-eabi-gcc
 
 
 # Define the source files
-SOURCES = source source/fatfs source/drawing
+SOURCES = source source/fatfs source/drawing source/utils
 INCLUDE = $(foreach dir, $(SOURCES), -I$(dir))
 SFILES	= $(foreach dir, $(SOURCES), $(wildcard $(dir)/*.s))
 CFILES	= $(foreach dir, $(SOURCES), $(wildcard $(dir)/*.c))

@@ -25,3 +25,4 @@ clean:
 	make -C arm9 clean
 	#make -C arm11 clean
 	rm -f $(EXECUTABLE).firm
+	rm -f boot.firm

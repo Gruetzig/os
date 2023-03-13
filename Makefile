@@ -23,6 +23,6 @@ $(EXECUTABLE).firm: $(ARM9ELF)
 
 clean:
 	make -C arm9 clean
-	#make -C arm11 clean
+	#make -C arm11 cleanzz
 	rm -f $(EXECUTABLE).firm
 	rm -f boot.firm

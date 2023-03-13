@@ -25,9 +25,8 @@
 
 
 void InitScreenFbs(int argc, char *argv[]);
-void ClearScreen(u32 *screen, int width, int color);
+void ClearScreen(u8 *screen, int width, int color);
 void ClearScreenFull(bool clear_top, bool clear_bottom);
-u32* GetScreen(int screen);
-void DrawPixel(int x, int y, int color, u32 *screen);
-void DrawRecFull(int x, int y, int w, int h, int color, u32 *screen);
-void DrawCircle(int x, int y, int r, int color, u32 *screen);
+u8* GetScreen(int screen);
+void DrawPixel(int x, int y, int color, u8 *screen);
+void DrawRecFull(int x, int y, int w, int h, int color, u8 *screen);

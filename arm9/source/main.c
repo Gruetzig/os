@@ -3,7 +3,7 @@
 #include "utils/utils.h"
 #include "buttons.h"
 
-u32* screen;
+u8* screen;
 
 void main(int argc, char *argv[])
 {
@@ -12,7 +12,6 @@ void main(int argc, char *argv[])
 	int color = COLOR_WHITE;
 	screen = GetScreen(1);
 	DrawRecFull(10, 10, 50, 50, color, screen);
-	DrawCircle(100, 100, 10, color, screen);
   	while (true) {//Main Loop 
 	
 		if (HID_PAD & BUTTON_START) {

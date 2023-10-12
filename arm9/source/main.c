@@ -16,9 +16,12 @@
 
 #include "types.h"
 #include "buttons.h"
+#include "sdraw.h"
 
 u8* screen;
 
 int main(int argc, char *argv[]) {
+    InitScreenFbs(argc, argv);
+    drawString(true, 1, 1, 0xFFFFFF, "Hello world", 12);
 	while(1);
 }

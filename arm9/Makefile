@@ -19,26 +19,28 @@ ELF = arm9.elf
 
 # Define the flags to be passed to the compiler
 CFLAGS = -DARM9 $(INCLUDE) -march=$(ARCH) -O2 -Wall
-LDFLAGS = -T link.ld -nostartfiles -nostdlib
+LDFLAGS = -T link.ld -Wl,--no-warn-rwx-segments -nostartfiles -nostdlib
 # Define the default target to build when no target is specified
 all: $(ELF)
 
 # Define a rule to build the target executable
 $(ELF): $(OBJECTS)
-	$(CC) $(LDFLAGS) $(OBJECTS) -o $@
+	@echo Linking together to $@
+	@$(CC) $(LDFLAGS) $(OBJECTS) -o $@
 
 # Define a rule to build the C object files
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	@echo Compiling $<
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 # Define a rule to build the ASM object files
 %.o: %.s
-	$(CC) $(CFLAGS) -c $< -o $@
+	@echo Compiling $<
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 
 # Define a rule to clean up the project directory
 clean:
-	rm -f $(ELF)
-	cd source
-	rm -f $(OBJECTS)
-	cd ..
+	@echo cleaning up arm9...
+	@rm -f $(ELF)
+	@rm -f $(OBJECTS)

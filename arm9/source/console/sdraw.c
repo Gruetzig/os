@@ -1,5 +1,5 @@
 #include "sdraw.h"
-
+#include "font.h"
 
 void drawCharacter(bool isTopScreen, u16 posX, u16 posY, u32 color, char character) { //taken from luma3ds
     u8 *select = isTopScreen ? fbs[0].top_left : fbs[0].bottom;

@@ -32,4 +32,6 @@ extern FrameBufs fbs[2];
 #define SCREEN_WIDTH_TOP 400
 #define SCREEN_WIDTH_BOTTOM 320
 
+void InitScreenFbs(int argc, char *argv[]);
+
 #endif

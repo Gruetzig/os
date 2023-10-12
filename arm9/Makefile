@@ -4,7 +4,7 @@ CC = arm-none-eabi-gcc
 
 
 # Define the source files
-SOURCES = source source/drawing source/console source/drivers # source/fatfs
+SOURCES = source source/drawing source/console source/drivers # source/drivers/fatfs
 INCLUDE = $(foreach dir,$(SOURCES),-I "$(shell pwd)/$(dir)")
 SFILES	= $(foreach dir, $(SOURCES), $(wildcard $(dir)/*.s))
 CFILES	= $(foreach dir, $(SOURCES), $(wildcard $(dir)/*.c))

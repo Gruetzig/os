@@ -17,11 +17,19 @@
 #include "types.h"
 #include "buttons.h"
 #include "sdraw.h"
+#include "i2c.h"
 
 u8* screen;
+
+void poweroff() {
+	i2cWriteRegister(I2C_DEV_MCU, 0x20, 1 << 0);
+	while (1);
+}
 
 int main(int argc, char *argv[]) {
     InitScreenFbs(argc, argv);
     drawString(true, 1, 1, 0xFFFFFF, "Hello world", 12);
-	while(1);
+	while (!(HID_PAD & BUTTON_START));
+    poweroff();
+    return 0;
 }

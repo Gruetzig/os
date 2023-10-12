@@ -24,5 +24,6 @@ void drawString(bool isTopScreen, u16 posX, u16 posY, u32 color, const char* str
     u16 charposx = 0; 
     for (int i = 0;string[i] != '\0' || i < maxlen;i++) {
         drawCharacter(isTopScreen, (posX + charposx * CHAR_SPACING_X), posY, color, string[i]);
+        charposx++;
     }
 }

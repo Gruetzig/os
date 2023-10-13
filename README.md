@@ -2,8 +2,10 @@ yay
 
 # Building
 
-using normal arm-none-eabi-gcc :)
-```make```
+using normal arm-none-eabi-gcc :) \
+build with \
+```make``` \
+also need newlib and firmtool
 
 # credits
 

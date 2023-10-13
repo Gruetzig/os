@@ -2,3 +2,5 @@
 .vscode/*
 *.o
 *.elf
+.venv/*
+__pycache__/*

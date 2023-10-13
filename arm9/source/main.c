@@ -16,7 +16,7 @@
 
 #include "types.h"
 #include "buttons.h"
-#include "sdraw.h"
+#include "console.h"
 #include "i2c.h"
 
 u8* screen;
@@ -28,7 +28,7 @@ void poweroff() {
 
 int main(int argc, char *argv[]) {
     InitScreenFbs(argc, argv);
-    drawString(true, 1, 1, 0xFFFFFF, "Hello world", 12);
+    this_printf("Hello World, my lord\n ILY");
 	while (!(HID_PAD & BUTTON_START));
     poweroff();
     return 0;

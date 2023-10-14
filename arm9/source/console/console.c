@@ -30,8 +30,10 @@ void this_printf(char* string) {
 void drawConsole() {
     u16 charposx = 0; 
     u16 charposy = 0;
-    for (int i = 0;consoleBuf[i] != '\0' || i < PRINTBUFMAX;i++) {
-        if (consoleBuf[i] == '\n') {
+    for (int i = 0;i < PRINTBUFMAX;i++) {
+        if (consoleBuf[i] == '\0') {
+            break;
+        } else if (consoleBuf[i] == '\n') {
             charposy++;
             charposx = 0;
         } else if (consoleBuf[i] == '\r') {

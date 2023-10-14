@@ -19,8 +19,6 @@
 #include "console.h"
 #include "i2c.h"
 
-u8* screen;
-
 void poweroff() {
 	i2cWriteRegister(I2C_DEV_MCU, 0x20, 1 << 0);
 	while (1);
@@ -29,6 +27,7 @@ void poweroff() {
 int main(int argc, char *argv[]) {
     InitScreenFbs(argc, argv);
     this_printf("Hello World, my lord\n ILY");
+    drawConsole();
 	while (!(HID_PAD & BUTTON_START));
     poweroff();
     return 0;

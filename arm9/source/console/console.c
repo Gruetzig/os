@@ -22,7 +22,7 @@ void pushString(char* string, s32 len) {
     consoleBuf[consoleBufPos+1] = '\0';
 }
 
-void this_printf(char* string) {
+void printf(char* string) {
     s32 buflen = strlen(string);
     pushString(string, buflen);
 }

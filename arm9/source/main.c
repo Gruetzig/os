@@ -26,7 +26,8 @@ void poweroff() {
 
 int main(int argc, char *argv[]) {
     InitScreenFbs(argc, argv);
-    this_printf("Hello World, my lord\n ILY");
+    printf("Hello World, my lord\n ILY");
+    printf("OKAY");
     drawConsole();
 	while (!(HID_PAD & BUTTON_START));
     poweroff();

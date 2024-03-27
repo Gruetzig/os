@@ -27,9 +27,7 @@ void poweroff() {
 
 int main(int argc, char *argv[]) {
     InitScreenFbs(argc, argv);
-    printf("Hello World, my lord\n ILY");
-    printf("OKAY");
-    printf("\n%d %% %s", 131231231, "He");
+    printf("Hello from ARM9");
     drawConsole();
 	while (!(HID_PAD & BUTTON_START));
     poweroff();

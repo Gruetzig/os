@@ -15,18 +15,14 @@
 */
 
 #include "types.h"
+#include "buttons.h"
+#include "console.h"
+#include "print.h"
 
-
-typedef struct framebuffers{
-	u8 *top_left;
-	u8 *top_right;
-	u8 *bottom;
-} FrameBufs;
-
-extern FrameBufs fbs[2];
-
-#define SCREEN_HEIGHT 240
-#define SCREEN_WIDTH_TOP 400
-#define SCREEN_WIDTH_BOTTOM 320
-
-void InitScreenFbs(int argc, char *argv[]);
+int main(int argc, char *argv[]) {
+    InitScreenFbs(argc, argv);
+    printf("Hello from ARM11");
+    drawConsole();
+	while (1);
+    return 0;
+}

@@ -38,7 +38,11 @@ void drawConsole() {
         } else if (consoleBuf[i] == '\r') {
             charposx = 0;
         } else {
+            #ifdef ARM11
             drawCharacter(true, (charposx * CHAR_SPACING_X), (charposy * CHAR_SPACING_Y), 0xFFFFFF, consoleBuf[i]);
+            #elif ARM9
+            drawCharacter(false, (charposx * CHAR_SPACING_X), (charposy * CHAR_SPACING_Y), 0xFFFFFF, consoleBuf[i]);
+            #endif
             charposx++;
         }
     }

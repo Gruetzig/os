@@ -4,3 +4,4 @@
 *.elf
 .venv/*
 __pycache__/*
+research/*

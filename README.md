@@ -3,6 +3,10 @@ yay
 # building
 go figure
 
+# hints
+If you ever wonder why you get undefined references to functions in libgcc when using -nostdlib despite having it in your LDFLAGS you should make sure your LDFLAGS come after object file arguments smh my head
+
+
 # credits
 
 - firm linux loader: inspiration, linker script for arm9

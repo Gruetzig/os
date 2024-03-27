@@ -3,7 +3,7 @@
 char consoleBuf[PRINTBUFMAX];
 u32 consoleBufPos = 0;
 
-s32 strlen(char* string) {
+s32 strlen(const char* string) {
     for (int i = 0;i < PRINTBUFMAX;i++) {
         if (string[i] == '\0') return i;
     }
@@ -15,16 +15,15 @@ static inline void consoleBufAppend(char character) {
     consoleBufPos++;
 }
 
+void pushCharacter(char character) {
+    consoleBufAppend(character);
+}
+
 void pushString(char* string, s32 len) {
     for (int i = 0;i < len;i++) {
         consoleBufAppend(string[i]);
     }
     consoleBuf[consoleBufPos+1] = '\0';
-}
-
-void printf(char* string) {
-    s32 buflen = strlen(string);
-    pushString(string, buflen);
 }
 
 void drawConsole() {

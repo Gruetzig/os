@@ -5,7 +5,7 @@ CC = $(HOME)/opt/cross/bin/arm-none-eabi-gcc
 
 
 # Define the source files
-SOURCES = source source/drawing source/console source/drivers # source/drivers/fatfs
+SOURCES = source source/drivers source/drivers/fatfs ../common ../common/console ../common/drawing
 INCLUDE = $(foreach dir,$(SOURCES),-I "$(shell pwd)/$(dir)")
 SFILES	= $(foreach dir, $(SOURCES), $(wildcard $(dir)/*.s))
 CFILES	= $(foreach dir, $(SOURCES), $(wildcard $(dir)/*.c))
@@ -20,14 +20,14 @@ ELF = arm9.elf
 
 # Define the flags to be passed to the compiler
 CFLAGS = -DARM9 $(INCLUDE) -march=$(ARCH) -O2 -Wall -mthumb -ffreestanding
-LDFLAGS = -T link.ld -Wl,--no-warn-rwx-segments -nostartfiles -nostdlib
+LDFLAGS = -T link.ld -Wl,--no-warn-rwx-segments -lgcc -nostartfiles -nostdlib
 # Define the default target to build when no target is specified
 all: $(ELF)
 
 # Define a rule to build the target executable
 $(ELF): $(OBJECTS)
 	@echo [ARM9] Linking together to $@
-	@$(CC) $(LDFLAGS) $(OBJECTS) -o $@
+	@$(CC) $(OBJECTS) -o $@ $(LDFLAGS)
 
 # Define a rule to build the C object files
 %.o: %.c

@@ -15,14 +15,11 @@
 */
 
 #include "types.h"
-#include "buttons.h"
-#include "console.h"
-#include "print.h"
+#include "pxi.h"
 
 int main(int argc, char *argv[]) {
-    InitScreenFbs(argc, argv);
-    printf("Hello from ARM11");
-    drawConsole();
+    PXI_Init();
+    PXI_SendBuffer("Hello from ARM11", 17);
 	while (1);
     return 0;
 }

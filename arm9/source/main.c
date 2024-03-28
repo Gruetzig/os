@@ -19,6 +19,7 @@
 #include "console.h"
 #include "print.h"
 #include "i2c.h"
+#include "pxi.h"
 
 void poweroff() {
 	i2cWriteRegister(I2C_DEV_MCU, 0x20, 1 << 0);
@@ -26,8 +27,13 @@ void poweroff() {
 }
 
 int main(int argc, char *argv[]) {
+    PXI_Init();
     InitScreenFbs(argc, argv);
-    printf("Hello from ARM9");
+    printf("Hello from ARM9\n");
+    drawConsole();
+    u32 size = 0;
+    char *buf = PXI_RecvBuffer(&size);
+    printf("Eh: %d %d", buf, size);
     drawConsole();
 	while (!(HID_PAD & BUTTON_START));
     poweroff();

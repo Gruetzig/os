@@ -25,9 +25,12 @@ void poweroff() {
 	i2cWriteRegister(I2C_DEV_MCU, 0x20, 1 << 0);
 	while (1);
 }
+int a = 0x08006000;
 
 int main(int argc, char *argv[]) {
     PXI_Init();
+    printf("Hello from ARM9\n");
+    drawConsole();
     PXI_Synchronize(0x87);
     InitScreenFbs(argc, argv);
     printf("Hello from ARM9\n");

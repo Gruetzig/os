@@ -21,6 +21,8 @@
 
 int main(int argc, char *argv[]) {
     PXI_Init();
+    printf("Hello from ARM11");
+    drawConsole();
     PXI_Synchronize(0x87);
     PXI_SendBuffer("Hello from ARM11", 17);
     printf("Hello from ARM11");

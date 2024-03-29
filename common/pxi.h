@@ -27,10 +27,14 @@
 //cnt control
 #define PXI_CNT_EMPTY_FULL_ERROR (1 << 14) //huh
 #define PXI_CNT_ENABLE_FIFO (1 << 15) //yeah lol I think I wanna enable this
+//sync send and recv bytes
+#define PXI_SYNC_SEND (vu8*)(PXI_SYNC + 0x0)
+#define PXI_SYNC_RECV (vu8*)(PXI_SYNC + 0x1)
 
 void PXI_Init();
 
 void PXI_Send(u32 word);
+void PXI_Synchronize(u8 magic);
 u32 PXI_Recv();
 void PXI_WaitForEmptySend();
 void PXI_SendBuffer(void* pointer, u32 size);

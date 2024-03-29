@@ -5,5 +5,5 @@
 .global _start
 _start:
 	@ Set stack pointer
-    ldr sp, =20020000
+    ldr sp, =0x20020000
     bl main

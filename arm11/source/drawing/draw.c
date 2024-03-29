@@ -14,29 +14,24 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "types.h"
-#include "buttons.h"
-#include "console.h"
-#include "print.h"
-#include "i2c.h"
-#include "pxi.h"
+#include "draw.h"
 
-void poweroff() {
-	i2cWriteRegister(I2C_DEV_MCU, 0x20, 1 << 0);
-	while (1);
-}
+struct {
+	u8 *top_left;
+	u8 *top_right;
+	u8 *bottom;
+} *fb;
 
-int main(int argc, char *argv[]) {
-    PXI_Init();
-    PXI_Synchronize(0x87);
-    InitScreenFbs(argc, argv);
-    printf("Hello from ARM9\n");
-    drawConsole();
-    u32 size = 0;
-    char *buf = PXI_RecvBuffer(&size);
-    printf("Eh: %d %d", buf, size);
-    drawConsole();
-	while (!(HID_PAD & BUTTON_START));
-    poweroff();
-    return 0;
-}
+FrameBufs fbs[2] =
+{
+    {
+        .top_left  = (u8 *)0x18300000,
+        .top_right = (u8 *)0x18300000,
+        .bottom    = (u8 *)0x18346500,
+    },
+    {
+        .top_left  = (u8 *)0x18400000,
+        .top_right = (u8 *)0x18400000,
+        .bottom    = (u8 *)0x18446500,
+    },
+};

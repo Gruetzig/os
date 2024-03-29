@@ -5,7 +5,7 @@ CC = $(HOME)/opt/cross/bin/arm-none-eabi-gcc
 
 
 # Define the source files
-SOURCES = source source/drivers source/drivers/fatfs ../common ../common/console ../common/drawing
+SOURCES = source source/drivers source/drivers/fatfs source/drawing ../common ../common/console
 INCLUDE = $(foreach dir,$(SOURCES),-I "$(shell pwd)/$(dir)")
 SFILES	= $(foreach dir, $(SOURCES), $(wildcard $(dir)/*.s))
 CFILES	= $(foreach dir, $(SOURCES), $(wildcard $(dir)/*.c))

@@ -9,6 +9,16 @@ void PXI_Init() {
     *PXI_CNT = PXI_CNT_SEND_CLEAR | PXI_CNT_ENABLE_FIFO;
 }
 
+void PXI_Synchronize(u8 magic) {
+#ifdef ARM9
+    while (*PXI_SYNC_RECV != magic);
+    *PXI_SYNC_SEND = magic;
+#else
+    *PXI_SYNC_SEND = magic;
+    while (*PXI_SYNC_RECV != magic);
+#endif
+}
+
 void PXI_Send(u32 word) {
     while (*PXI_CNT & PXI_CNT_SEND_FULL);
     *PXI_SEND = word;

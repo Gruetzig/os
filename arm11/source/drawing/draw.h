@@ -15,28 +15,18 @@
 */
 
 #include "types.h"
-#include "buttons.h"
-#include "console.h"
-#include "print.h"
-#include "i2c.h"
-#include "pxi.h"
 
-void poweroff() {
-	i2cWriteRegister(I2C_DEV_MCU, 0x20, 1 << 0);
-	while (1);
-}
 
-int main(int argc, char *argv[]) {
-    PXI_Init();
-    PXI_Synchronize(0x87);
-    InitScreenFbs(argc, argv);
-    printf("Hello from ARM9\n");
-    drawConsole();
-    u32 size = 0;
-    char *buf = PXI_RecvBuffer(&size);
-    printf("Eh: %d %d", buf, size);
-    drawConsole();
-	while (!(HID_PAD & BUTTON_START));
-    poweroff();
-    return 0;
-}
+typedef struct framebuffers{
+	u8 *top_left;
+	u8 *top_right;
+	u8 *bottom;
+} FrameBufs;
+
+extern FrameBufs fbs[2];
+
+#define SCREEN_HEIGHT 240
+#define SCREEN_WIDTH_TOP 400
+#define SCREEN_WIDTH_BOTTOM 320
+
+void InitScreenFbs(int argc, char *argv[]);

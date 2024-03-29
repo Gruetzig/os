@@ -16,10 +16,15 @@
 
 #include "types.h"
 #include "pxi.h"
+#include "print.h"
+#include "console.h"
 
 int main(int argc, char *argv[]) {
     PXI_Init();
+    PXI_Synchronize(0x87);
     PXI_SendBuffer("Hello from ARM11", 17);
+    printf("Hello from ARM11");
+    drawConsole();
 	while (1);
     return 0;
 }

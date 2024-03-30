@@ -1,8 +1,8 @@
 #include "types.h"
 #ifdef ARM9
-#define PXI_REGS ((vu32*)0x10008000)
+#define PXI_REGS (0x10008000)
 #else
-#define PXI_REGS ((vu32*)0x10163000)
+#define PXI_REGS (0x10163000)
 #endif
 //
 #define PXI_SYNC ((vu32*)(PXI_REGS + 0x0))

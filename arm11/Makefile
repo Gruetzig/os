@@ -1,7 +1,7 @@
 # Define the target architecture and compiler
 ARCH = armv6k
-# CC = arm-none-eabi-gcc
-CC = $(HOME)/opt/cross/bin/arm-none-eabi-gcc
+CC = arm-none-eabi-gcc
+# CC = $(HOME)/opt/cross/bin/arm-none-eabi-gcc
 
 
 # Define the source files

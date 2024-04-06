@@ -9,13 +9,11 @@ int pushDecimal(int decimal) {
     char buf[32]; // Assuming a maximum of 32 digits
     int i = 0;
     
-    // Special case for zero
     if (decimal == 0) {
         buf[i++] = '0';
     }
     else {
-        // Constructing the reversed string representation of the decimal number
-        while (decimal != 0 && i < sizeof(buf) - 1) { // Ensure we don't overflow buf
+        while (decimal != 0 && i < 31) { 
             buf[i++] = '0' + (decimal % 10);
             decimal /= 10;
         }
@@ -23,12 +21,10 @@ int pushDecimal(int decimal) {
     
     // Reversing and pushing the characters onto some output
     for (int j = i - 1; j >= 0; j--) {
-        pushCharacter('|'); // Assuming these functions work correctly
         pushCharacter(buf[j]);
-        pushCharacter('|');
     }
     
-    pushString("", 0); // Not necessary if pushString already adds '\0'
+    pushString("", 0);
     
     return i;
 }
